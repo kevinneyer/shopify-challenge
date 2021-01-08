@@ -1,14 +1,13 @@
 import React,  { useState }from 'react'
 import Movies from './movies'
 import Nominations from './nominations'
-import { Form, Button, Container, Row, Col }from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card }from 'react-bootstrap';
 
 const Home = () => {
 
     const [ title, setTitle ] = useState('')
     const [ movies, setMovies ] = useState([])
     const [ nominations, setNominations ] = useState([])
-    // const [ nominated, setNominated ] = useState(false)
 
     const titleHandler = (e) => {
         setTitle(e.target.value)
@@ -16,6 +15,9 @@ const Home = () => {
     
     const submitHandler = (e) => {
         e.preventDefault();
+        if(title.length === 0){
+            alert('Search Somthing!')
+        } else
         fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${title}`)
         .then(res => res.json())
         .then(movies => setMovies(movies.Search))
@@ -36,14 +38,7 @@ const Home = () => {
         let newNominations = spreadNominations.filter(nominee => nominee.Title !== movie.Title)
         setNominations(newNominations)
     }
-
-    // const disableHandler = () => {
-    //     setNominated(!nominated)
-    // }
     
-    if(nominations.length === 5){
-        alert('Nominations Complete!')
-    }
     return(
         <div>
             <Container>
@@ -60,11 +55,25 @@ const Home = () => {
             </Container>
             <Container>
                 <Row>
-                    <Col>{movies.length > 0 ? <Movies movies={movies} nominateHandler={nominateHandler} nominations={nominations} /> : null }</Col>
+                    <Col>
+                    {movies.length > 0 ? 
+                        <div>
+                            <h3>Movies</h3>
+                            <Card>
+                                <Card.Body>
+                                    {movies.map(movie => <Movies movie={movie} nominateHandler={nominateHandler} nominations={nominations} />)}
+                                </Card.Body>
+                            </Card> 
+                        </div>
+                    : 
+                    null 
+                    }
+                    </Col>
                     <Col>{nominations.length > 0 ? <Nominations nominations={nominations} removeHandler={removeHandler} /> : null }</Col>
                 </Row>
             </Container>    
         </div>
+    
     )
 }
 
