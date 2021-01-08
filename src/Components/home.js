@@ -21,7 +21,15 @@ const Home = () => {
         fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${title}`)
         .then(res => res.json())
         .then(movies => setMovies(movies.Search))
-        // setTitle('')
+        // .catch(error => {
+        //     if(error){
+        //         setTitle('')
+        //         setMovies([])
+        //         alert('there was an error. Try Again')
+        //     }
+        // })
+        
+        // // setTitle('')
     }
 
     const clearHandler = () => {

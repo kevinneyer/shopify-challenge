@@ -1,5 +1,5 @@
 import React from 'react'
-import { Media, Button }from 'react-bootstrap';
+import { Media, Button, Spinner }from 'react-bootstrap';
 
 const Movies = (props) => {
 
@@ -7,6 +7,7 @@ const Movies = (props) => {
 
     return(
         <div>
+            {movie ? 
             <Media>
                 <img
                     width={64}
@@ -21,6 +22,9 @@ const Movies = (props) => {
                 </Media.Body>
                 {nominations.includes(movie) ? <Button disabled >Nominate</Button>: <Button onClick={() => nominateHandler(movie)}>Nominate</Button>}
             </Media>
+            :
+            <Spinner animation="grow" />
+            }
         </div>
     )
 }
