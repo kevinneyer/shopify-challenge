@@ -68,18 +68,15 @@ const Home = () => {
             <Container>
                 <Row>
                     <Col>
-                    {movies.length > 0 ? 
+                   
                         <div>
                             <h3>Movies</h3>
                             <Card>
-                                <Card.Body>
-                                    {movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} />)}
-                                </Card.Body>
+                                
+                                {movies.length > 0 ? <Card.Body> <h5>Search Results for {title}</h5>{ movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Card.Body>: <Card.Body><h5>Search some Movies!</h5> </Card.Body>}
+                               
                             </Card> 
                         </div>
-                    : 
-                    null 
-                    }
                     </Col>
                     <Col> <Nominations nominations={nominations} removeHandler={removeHandler} /></Col>
                 </Row>
