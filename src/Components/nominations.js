@@ -9,8 +9,9 @@ const Nominations = (props) => {
         <div>
             <h3>Nominations</h3> 
             <Card>  
-                <Card.Body>    
-                    {nominations.map(nominee => 
+                <Card.Body> 
+                    {nominations.length > 0 ?
+                    nominations.map(nominee => 
                         <Media>
                             <img
                                 width={64}
@@ -25,7 +26,10 @@ const Nominations = (props) => {
                             </Media.Body>
                             <Button onClick={() => removeHandler(nominee)}>Remove</Button>
                         </Media>
-                    )}
+                    )
+                    :
+                    <h5>Nominate some Movies!</h5>
+                    }
                 </Card.Body> 
             </Card>
         </div>

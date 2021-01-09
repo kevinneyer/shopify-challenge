@@ -1,4 +1,4 @@
-import React,  { useState }from 'react'
+import React,  { useState, useEffect }from 'react'
 import Movies from './movies'
 import Nominations from './nominations'
 import { Form, Button, Container, Row, Col, Card }from 'react-bootstrap';
@@ -12,6 +12,10 @@ const Home = () => {
     const titleHandler = (e) => {
         setTitle(e.target.value)
     }
+
+    // useEffect(() => {
+    //     setNominations(nominations)
+    // },[nominations])
     
     const submitHandler = (e) => {
         e.preventDefault();
@@ -46,7 +50,7 @@ const Home = () => {
         let newNominations = spreadNominations.filter(nominee => nominee.Title !== movie.Title)
         setNominations(newNominations)
     }
-    
+ 
     return(
         <div>
             <Container>
@@ -69,7 +73,7 @@ const Home = () => {
                             <h3>Movies</h3>
                             <Card>
                                 <Card.Body>
-                                    {movies.map(movie => <Movies movie={movie} nominateHandler={nominateHandler} nominations={nominations} />)}
+                                    {movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} />)}
                                 </Card.Body>
                             </Card> 
                         </div>
@@ -77,7 +81,7 @@ const Home = () => {
                     null 
                     }
                     </Col>
-                    <Col>{nominations.length > 0 ? <Nominations nominations={nominations} removeHandler={removeHandler} /> : null }</Col>
+                    <Col> <Nominations nominations={nominations} removeHandler={removeHandler} /></Col>
                 </Row>
             </Container>    
         </div>
