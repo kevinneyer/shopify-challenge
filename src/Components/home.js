@@ -1,7 +1,7 @@
 import React,  { useState, useEffect }from 'react'
 import Movies from './movies'
 import Nominations from './nominations'
-import { Form, Button, Container, Row, Col, Card }from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card, Alert }from 'react-bootstrap';
 
 const Home = () => {
 
@@ -53,6 +53,7 @@ const Home = () => {
  
     return(
         <div>
+           {nominations.length ===5 ? <Alert className='success-alert' variant='success'>Congratulations! You've completed your nominations!</Alert> : ''}
             <Container>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId="formBasicEmail">
@@ -62,7 +63,7 @@ const Home = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                <Button onClick={clearHandler} variant="secondary">Clear Search</Button>
+                <Button onClick={clearHandler} variant="dark">Clear Search</Button>
             </Form>
             </Container>
             <Container>

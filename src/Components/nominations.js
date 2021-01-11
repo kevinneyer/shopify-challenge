@@ -24,7 +24,7 @@ const Nominations = (props) => {
                                 <h5>{nominee.Title}</h5>
                                 <p>{nominee.Year}</p>
                             </Media.Body>
-                            <Button onClick={() => removeHandler(nominee)}>Remove</Button>
+                            <Button variant="danger" onClick={() => removeHandler(nominee)}>Remove</Button>
                         </Media>
                     )
                     :
