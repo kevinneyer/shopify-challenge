@@ -61,10 +61,10 @@ const Home = () => {
                     <Form.Label>Movie Title</Form.Label>
                     <Form.Control onChange={titleHandler} value={title} type="text" placeholder="Enter Movie Title Here..." />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className='submit' type="submit">
                     Submit
                 </Button>
-                <Button onClick={clearHandler} variant="dark">Clear Search</Button>
+                <Button onClick={clearHandler} variant="dark" type='reset'>Clear Search</Button>
             </Form>
             </Container>
             <Container className='movie-noms'>
