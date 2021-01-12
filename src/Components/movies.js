@@ -20,7 +20,7 @@ const Movies = (props) => {
                     <h5>{movie.Title}</h5>
                     <p>{movie.Year}</p>
                 </Media.Body>
-                {nominations.includes(movie) || nominations.length === 5 ? <Button variant="secondary" disabled >Nominate</Button>: <Button variant="success" onClick={() => nominateHandler(movie)}>Nominate</Button>}
+                {nominations.includes(movie) || nominations.length === 5 ? <Button variant="secondary" disabled >Nominate</Button>: <Button className='nominate' onClick={() => nominateHandler(movie)}>Nominate</Button>}
             </Media>
             :
             <Spinner animation="grow" />

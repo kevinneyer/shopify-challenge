@@ -16,7 +16,7 @@ code {
   text-align: center;
   color: white;
   font-weight: 500;
-  margin-left: -1em;
+  margin-left: -1em; 
   /* color: #50B83C; */
   /* margin-top: -1.7em; */
   /* margin-top: 1em; */
@@ -35,7 +35,6 @@ code {
   /* background-color:#50B83C; */
    /* background-color:#212B36 ; */
    background-color: black;
- 
 }
 
 .logo{
@@ -48,7 +47,7 @@ code {
 }
 
 .title{
-  color: #EEC200;
+  color: #f5c518;
   font-weight: 700;
 }
 
@@ -64,3 +63,14 @@ code {
   margin-bottom: 12em;
 }
 
+.remainder{
+  color:#1f98e7;
+}
+
+.nominate{
+  background-color: #1f98e7;
+}
+
+.nominate:hover{
+  background-color: #0074c2;
+}

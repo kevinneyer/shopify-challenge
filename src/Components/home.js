@@ -61,9 +61,9 @@ const Home = () => {
                     <Form.Label className='title'>Movie Title</Form.Label>
                     <Form.Control onChange={titleHandler} value={title} type="text" placeholder="Enter Movie Title Here..." />
                 </Form.Group>
-                <Button className='submit' type="submit">
+                {/* <Button className='submit' type="submit">
                     Submit
-                </Button>
+                </Button> */}
                 <Button onClick={clearHandler} variant="dark"> Clear Search</Button>
             </Form>
             </Container>
@@ -72,8 +72,9 @@ const Home = () => {
                     <Col>
                         <div>
                         <h3 className='sub-header'>Movies</h3>
+                        {movies.length > 0? <h5 className='remainder'>Search Results for {title}</h5> : <h5 className='remainder'>Search Results</h5> }
                             <Card className='movies'>  
-                                {movies.length > 0 ? <Card.Body> <h5>Search Results for {title}</h5>{ movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Card.Body>: <Card.Body><h5>Search some Movies!</h5> </Card.Body>}
+                                {movies.length > 0 ? <Card.Body>{ movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Card.Body>: <Card.Body><h5>Search some Movies!</h5> </Card.Body>}
                             </Card> 
                         </div>
                     </Col>

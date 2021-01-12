@@ -9,13 +9,14 @@ const Nominations = (props) => {
     return(
         <div>
             <h3 className='sub-header'>Nominations</h3> 
+            {remainder > 0 ?
+                <h5 className='remainder'>You have {remainder} {remainder === 1 ? 'nomination' : 'nominations'} left</h5>
+                :
+                <h5 className='remainder'>You're finished voting!</h5>
+                } 
             <Card>  
                 <Card.Body> 
-                {remainder > 0 ?
-                <p>You have {remainder} {remainder === 1 ? 'nomination' : 'nominations'} left</p>
-                :
-                <p>You're finished voting!</p>
-                }   
+  
                     {nominations.length > 0 ?
                     nominations.map(nominee => 
                         <Media>
