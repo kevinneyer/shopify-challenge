@@ -6,19 +6,19 @@ import logo  from './assets/logo.png'
 
 const App = () => {
   return (
-    <div>
+    <div  className='app'>
       <Jumbotron className='jumbo'> 
-      <Container>
-      <Row>
-        <Col>
+      {/* <Container> */}
+      {/* <Row>
+        <Col> */}
         {/* <img className='logo' src={logo} alt='logo'></img> */}
         <h1 className='header'>
           <img className='logo' src={logo} alt='logo'></img>
           The Shoppies
         </h1>
-        </Col>
-        </Row>
-        </Container> 
+        {/* </Col>
+        </Row> */}
+        {/* </Container>  */}
       </Jumbotron>
       <Home />
     </div>

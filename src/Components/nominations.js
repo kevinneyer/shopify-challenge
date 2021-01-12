@@ -8,7 +8,7 @@ const Nominations = (props) => {
  
     return(
         <div>
-            <h3>Nominations</h3> 
+            <h3 className='sub-header'>Nominations</h3> 
             <Card>  
                 <Card.Body> 
                 {remainder > 0 ?

@@ -16,6 +16,8 @@ code {
   text-align: center;
   color: white;
   font-weight: 500;
+  margin-left: -1em;
+  /* color: #50B83C; */
   /* margin-top: -1.7em; */
   /* margin-top: 1em; */
   
@@ -31,8 +33,8 @@ code {
 
 .jumbo{
   /* background-color:#50B83C; */
-  background-color:#212B36
-  ;
+   /* background-color:#212B36 ; */
+   background-color: black;
  
 }
 
@@ -41,4 +43,24 @@ code {
   margin-top: -.25em;
 }
 
+.app{
+  background-color: black;
+}
+
+.title{
+  color: #EEC200;
+  font-weight: 700;
+}
+
+.sub-header{
+  color: white;
+}
+
+.home-div{
+  background-color: black;
+}
+
+.movies{
+  margin-bottom: 12em;
+}
 
