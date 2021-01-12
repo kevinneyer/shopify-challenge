@@ -1,7 +1,8 @@
 import React,  { useState, useEffect }from 'react'
 import Movies from './movies'
 import Nominations from './nominations'
-import { Form, Button, Container, Row, Col, Card, Alert }from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card, Alert } from 'react-bootstrap';
+import ShowMovie from './showMovie';
 
 const Home = () => {
 
@@ -50,10 +51,10 @@ const Home = () => {
         let newNominations = spreadNominations.filter(nominee => nominee.Title !== movie.Title)
         setNominations(newNominations)
     }
- 
+   
     return(
         <div>
-           {nominations.length ===5 ? <Alert className='success-alert' variant='success'>Congratulations! You've completed your nominations!</Alert> : ''}
+           {nominations.length ===5 ? <ShowMovie/> : ''}
             <Container>
             <Form onSubmit={submitHandler}>
                 <Form.Group controlId="formBasicEmail">
@@ -66,16 +67,13 @@ const Home = () => {
                 <Button onClick={clearHandler} variant="dark">Clear Search</Button>
             </Form>
             </Container>
-            <Container>
+            <Container className='movie-noms'>
                 <Row>
                     <Col>
-                   
                         <div>
                             <h3>Movies</h3>
-                            <Card>
-                                
+                            <Card>  
                                 {movies.length > 0 ? <Card.Body> <h5>Search Results for {title}</h5>{ movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Card.Body>: <Card.Body><h5>Search some Movies!</h5> </Card.Body>}
-                               
                             </Card> 
                         </div>
                     </Col>

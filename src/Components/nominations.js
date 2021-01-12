@@ -4,12 +4,18 @@ import { Media, Button, Card }from 'react-bootstrap';
 const Nominations = (props) => {
 
     const { nominations, removeHandler } = props
+    const remainder = 5 - nominations.length
  
     return(
         <div>
             <h3>Nominations</h3> 
             <Card>  
                 <Card.Body> 
+                {remainder > 0 ?
+                <p>You have {remainder} {remainder === 1 ? 'nomination' : 'nominations'} left</p>
+                :
+                <p>You're finished voting!</p>
+                }   
                     {nominations.length > 0 ?
                     nominations.map(nominee => 
                         <Media>
