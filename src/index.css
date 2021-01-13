@@ -16,6 +16,9 @@ code {
   text-align: center;
   color: white;
   font-weight: 500;
+  margin-left: -1em; 
+  font-size: 5em;
+  /* color: #50B83C; */
   /* margin-top: -1.7em; */
   /* margin-top: 1em; */
   
@@ -31,9 +34,8 @@ code {
 
 .jumbo{
   /* background-color:#50B83C; */
-  background-color:#212B36
-  ;
- 
+   /* background-color:#212B36 ; */
+   background-color: black;
 }
 
 .logo{
@@ -41,4 +43,36 @@ code {
   margin-top: -.25em;
 }
 
+.app{
+  background-color: black;
+  /* text-align: center; */
+}
 
+.title{
+  color: #f5c518;
+  font-weight: 700;
+}
+
+.sub-header{
+  color: white;
+}
+
+.home-div{
+  background-color: black;
+}
+
+.movies{
+  margin-bottom: 12em;
+}
+
+.remainder{
+  color:#1f98e7;
+}
+
+.nominate{
+  background-color: #1f98e7;
+}
+
+.nominate:hover{
+  background-color: #0074c2;
+}
