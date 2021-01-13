@@ -17,6 +17,7 @@ code {
   color: white;
   font-weight: 500;
   margin-left: -1em; 
+  font-size: 5em;
   /* color: #50B83C; */
   /* margin-top: -1.7em; */
   /* margin-top: 1em; */
@@ -44,6 +45,7 @@ code {
 
 .app{
   background-color: black;
+  /* text-align: center; */
 }
 
 .title{
