@@ -14,31 +14,32 @@ const Nominations = (props) => {
                 :
                 <h5 className='remainder'>You're finished voting!</h5>
                 } 
-            <Card>  
-                <Card.Body> 
+            {/* <Card>  
+                <Card.Body>  */}
   
                     {nominations.length > 0 ?
                     nominations.map(nominee => 
                         <Media>
                             <img
                                 width={64}
-                                height={64}
+                                // height={64}
                                 className="mr-3"
                                 src={nominee.Poster}
                                 alt={nominee.Title}
                             />
-                            <Media.Body>
-                                <h5>{nominee.Title}</h5>
+                            <Media.Body className='nominee-text'>
+                                <h5 className='nominee-header'>{nominee.Title}</h5>
                                 <p>{nominee.Year}</p>
                             </Media.Body>
                             <Button variant="danger" onClick={() => removeHandler(nominee)}>Remove</Button>
                         </Media>
                     )
                     :
-                    <h5>Nominate some Movies!</h5>
+                    // <h5>Nominate some Movies!</h5>
+                    null
                     }
-                </Card.Body> 
-            </Card>
+                {/* </Card.Body> 
+            </Card> */}
         </div>
     )
 }

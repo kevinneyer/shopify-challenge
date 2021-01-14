@@ -76,3 +76,22 @@ code {
 .nominate:hover{
   background-color: #0074c2;
 }
+
+.card-text{
+  font-size: 15px;
+}
+
+.info-text{
+  color: #f5c518;
+}
+
+.nominee-text{
+  color: white;
+  /* font-size: 10px; */
+}
+
+.nominee-header{
+  font-size: 18px;
+  margin-right: -.75em;
+  margin-left: -.5em;
+}
