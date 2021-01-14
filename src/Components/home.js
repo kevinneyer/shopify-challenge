@@ -2,7 +2,7 @@ import React,  { useState, useEffect }from 'react'
 import Movies from './movies'
 import Nominations from './nominations'
 import { Form, Button, Container, Row, Col, Card, Alert } from 'react-bootstrap';
-import ShowMovie from './showMovie';
+import FinishedModal from './finishedModal';
 
 const Home = () => {
 
@@ -54,9 +54,9 @@ const Home = () => {
    
     return(
         <div>
-           {nominations.length ===5 ? <ShowMovie/> : ''}
+           {nominations.length ===5 ? <FinishedModal/> : ''}
             <Container>
-            <Form onSubmit={submitHandler}>
+            <Form className='input' onSubmit={submitHandler}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label className='title'>Movie Title</Form.Label>
                     <Form.Control onChange={titleHandler} value={title} type="text" placeholder="Enter Movie Title Here..." />

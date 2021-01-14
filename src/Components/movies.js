@@ -12,7 +12,7 @@ const Movies = (props) => {
             
             <Card style={{ width: '12rem' }} bg='dark' text='white'>
                 <Card.Img
-                    width={128}
+                    width={64}
                     height={300}
                     className="mr-3"
                     src={movie.Poster}

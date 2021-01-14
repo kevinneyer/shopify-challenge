@@ -1,5 +1,5 @@
 import React from 'react'
-import { Media, Button, Card }from 'react-bootstrap';
+import { Media, Button, Card, CardGroup }from 'react-bootstrap';
 
 const Nominations = (props) => {
 
@@ -19,6 +19,7 @@ const Nominations = (props) => {
   
                     {nominations.length > 0 ?
                     nominations.map(nominee => 
+                        <div className='nominations'>
                         <Media>
                             <img
                                 width={64}
@@ -32,7 +33,9 @@ const Nominations = (props) => {
                                 <p>{nominee.Year}</p>
                             </Media.Body>
                             <Button variant="danger" onClick={() => removeHandler(nominee)}>Remove</Button>
+                        
                         </Media>
+                        </div>
                     )
                     :
                     // <h5>Nominate some Movies!</h5>
