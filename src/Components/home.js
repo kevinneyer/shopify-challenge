@@ -2,7 +2,7 @@ import React,  { useState, useEffect }from 'react'
 import Movies from './movies'
 import Nominations from './nominations'
 import { Form, Button, Container, Row, Col, Card, Alert } from 'react-bootstrap';
-import ShowMovie from './showMovie';
+import FinishedModal from './finishedModal';
 
 const Home = () => {
 
@@ -54,9 +54,9 @@ const Home = () => {
    
     return(
         <div>
-           {nominations.length ===5 ? <ShowMovie/> : ''}
+           {nominations.length ===5 ? <FinishedModal/> : ''}
             <Container>
-            <Form onSubmit={submitHandler}>
+            <Form className='input' onSubmit={submitHandler}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label className='title'>Movie Title</Form.Label>
                     <Form.Control onChange={titleHandler} value={title} type="text" placeholder="Enter Movie Title Here..." />
@@ -69,13 +69,13 @@ const Home = () => {
             </Container>
             <Container className='movie-noms'>
                 <Row>
-                    <Col>
+                    <Col md='8'>
                         <div>
                         <h3 className='sub-header'>Movies</h3>
                         {movies.length > 0? <h5 className='remainder'>Search Results for {title}</h5> : <h5 className='remainder'>Search Results</h5> }
-                            <Card className='movies'>  
-                                {movies.length > 0 ? <Card.Body>{ movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Card.Body>: <Card.Body><h5>Search some Movies!</h5> </Card.Body>}
-                            </Card> 
+                            <div className='movies'>  
+                                {movies.length > 0 ? <Row> {movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Row>: null }
+                            </div> 
                         </div>
                     </Col>
                     <Col> <Nominations nominations={nominations} removeHandler={removeHandler} /></Col>

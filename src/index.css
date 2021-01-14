@@ -62,8 +62,12 @@ code {
 }
 
 .movies{
-  margin-bottom: 12em;
+  margin-bottom: 15em;
 }
+
+/* .nominations{
+  margin-bottom: 12em;
+} */
 
 .remainder{
   color:#1f98e7;
@@ -75,4 +79,30 @@ code {
 
 .nominate:hover{
   background-color: #0074c2;
+}
+
+.card-text{
+  font-size: 15px;
+}
+
+.info-text{
+  color: #f5c518;
+}
+
+.nominee-text{
+  color: white;
+}
+
+.nominee-header{
+  font-size: 18px;
+  margin-right: -.75em;
+  margin-left: -.5em;
+}
+
+.modal{
+
+}
+
+.input{
+  margin-top: -3em;
 }
