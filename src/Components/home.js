@@ -54,7 +54,7 @@ const Home = () => {
    
     return(
         <div>
-           {nominations.length ===5 ? <FinishedModal/> : ''}
+           {nominations.length === 5 ? <FinishedModal/> : ''}
             <Container>
             <Form className='input' onSubmit={submitHandler}>
                 <Form.Group controlId="formBasicEmail">
