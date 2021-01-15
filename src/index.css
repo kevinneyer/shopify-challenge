@@ -62,7 +62,7 @@ code {
 }
 
 .movies{
-  margin-bottom: 15em;
+  margin-bottom: 17em;
 }
 
 /* .nominations{
@@ -97,10 +97,6 @@ code {
   font-size: 18px;
   margin-right: -.75em;
   margin-left: -.5em;
-}
-
-.modal{
-
 }
 
 .input{
