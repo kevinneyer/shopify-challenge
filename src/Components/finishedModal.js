@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal }from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap'
 
 const FinishedModal = () => {
 
@@ -25,7 +25,7 @@ const FinishedModal = () => {
         </Modal.Footer>
       </Modal>
     </>
-  );
-  }
+  )
+}
 
 export default FinishedModal
