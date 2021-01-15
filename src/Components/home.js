@@ -13,7 +13,8 @@ const Home = () => {
         :   
         [])
     localStorage.setItem('nominations', JSON.stringify(nominations))
-    const data = JSON.parse(localStorage.getItem('nominations'))
+    // const data = JSON.parse(localStorage.getItem('nominations'))
+ 
 
     const titleHandler = (e) => {
         setTitle(e.target.value)
@@ -33,7 +34,7 @@ const Home = () => {
         .then(movies => setMovies(movies.Search))
         .catch(error => {
             if(error){
-                alert('there was an error. Try Again')
+                alert(`${error}`)
                 // .then(() => {
                 //     setTitle('')
                 //     setMovies([])
@@ -63,12 +64,16 @@ const Home = () => {
         setNominations(newNominations)
     }
    
+
+        const sortMovies = movies.sort((a,b) => a.Year - b.Year )
+    
+   console.log(movies)
     return(
         <div>
            {nominations.length === 5 ? <FinishedModal/> : ''}
             <Container>
             <Form className='input' onSubmit={submitHandler}>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                     <Form.Label className='title'>Movie Title</Form.Label>
                     <Form.Control onChange={titleHandler} value={title} type="text" placeholder="Enter Movie Title Here..." />
                 </Form.Group>
@@ -83,10 +88,12 @@ const Home = () => {
                     <Col md='8'>
                         <div>
                         <h3 className='sub-header'>Movies</h3>
+                        
                         {movies.length > 0 ? <h5 className='remainder'>Search Results for {title}</h5> : <h5 className='remainder'>Search Results</h5> }
                             <div className='movies'>  
-                                {movies.length > 0 ? <Row> {movies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Row>: null }
+                                {movies.length > 0 ? <Row> {sortMovies.map((movie, key) => <Movies id={key} movie={movie} nominateHandler={nominateHandler} nominations={nominations} title={title} />)  }</Row> : null }
                             </div> 
+                    
                         </div>
                     </Col>
                     <Col> <Nominations nominations={nominations} removeHandler={removeHandler} clearNominations={clearNominations}/></Col>
