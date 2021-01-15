@@ -47,6 +47,11 @@ const Home = () => {
         setTitle('')
     }
 
+    const clearNominations = () => {
+        setNominations([])
+        localStorage.clear()
+    }
+
     const nominateHandler = (movie) => {
         setNominations([...nominations, movie ])
         localStorage.setItem('nominations', JSON.stringify(nominations))
@@ -84,7 +89,7 @@ const Home = () => {
                             </div> 
                         </div>
                     </Col>
-                    <Col> <Nominations nominations={nominations} removeHandler={removeHandler} /></Col>
+                    <Col> <Nominations nominations={nominations} removeHandler={removeHandler} clearNominations={clearNominations}/></Col>
                 </Row>
             </Container>    
         </div>

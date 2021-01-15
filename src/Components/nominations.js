@@ -3,12 +3,12 @@ import { Media, Button, Card, CardGroup }from 'react-bootstrap';
 
 const Nominations = (props) => {
 
-    const { nominations, removeHandler } = props
+    const { nominations, removeHandler, clearNominations } = props
     const remainder = 5 - nominations.length
  
     return(
         <div>
-            <h3 className='sub-header'>Nominations</h3> 
+            <h3 className='sub-header'>Nominations {nominations.length >= 1 ? <Button onClick={clearNominations} variant='dark'>Clear Nominations</Button> : '' }</h3>
             {remainder > 0 ?
                 <h5 className='remainder'>You have {remainder} {remainder === 1 ? 'nomination' : 'nominations'} left</h5>
                 :
