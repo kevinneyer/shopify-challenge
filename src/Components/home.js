@@ -8,7 +8,12 @@ const Home = () => {
 
     const [ title, setTitle ] = useState('')
     const [ movies, setMovies ] = useState([])
-    const [ nominations, setNominations ] = useState([])
+    const [ nominations, setNominations ] = useState( localStorage.getItem('nominations') ?
+        JSON.parse(localStorage.getItem('nominations'))
+        :   
+        [])
+    localStorage.setItem('nominations', JSON.stringify(nominations))
+    const data = JSON.parse(localStorage.getItem('nominations'))
 
     const titleHandler = (e) => {
         setTitle(e.target.value)
@@ -44,6 +49,7 @@ const Home = () => {
 
     const nominateHandler = (movie) => {
         setNominations([...nominations, movie ])
+        localStorage.setItem('nominations', JSON.stringify(nominations))
     }
 
     const removeHandler = (movie) => {
