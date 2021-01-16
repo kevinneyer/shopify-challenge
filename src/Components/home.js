@@ -30,7 +30,7 @@ const Home = () => {
         if(title.length === 0){
             alert('Search Cannot be Empty!')
         } else
-        fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${title}`)
+        fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${title}`)
         .then(res => res.json())
         .then(movies => setMovies(movies.Search))
         .catch(error => {
