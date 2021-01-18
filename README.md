@@ -9,12 +9,12 @@ This application was created as a technical assessment for the Shopify Web Devel
 
 
 ## Tech/Framework Use
-** Built with: **
-    * [React] [https://reactjs.org/]
-    * [Bootstrap] [https://react-bootstrap.github.io/]
+**Built with:**
+* [React](https://reactjs.org/)
+* [Bootstrap](https://react-bootstrap.github.io/)
 
 ## API 
-All data is being fetched from the [OMDb] [https://www.omdbapi.com/] API.
+All data is being fetched from the [OMDb](https://www.omdbapi.com/) API.
 
 ## Features
 * Users can browse OMDb's database using search bar.
@@ -29,7 +29,7 @@ All data is being fetched from the [OMDb] [https://www.omdbapi.com/] API.
 1. Run `$ npm start` to start the server and have localhost run on port 3000.
 
 ## View Live
-This project can be found live [here] [https://neyer-shopify-challenge.netlify.app/]
+This project can be found live [here](https://neyer-shopify-challenge.netlify.app/)
 
 ## Credits
 © Kevin Neyer
