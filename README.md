@@ -19,7 +19,7 @@ All data is being fetched from the [OMDb](https://www.omdbapi.com/) API.
 ## Features
 * Users can browse OMDb's database using search bar.
 * Movies can be added and removed from the nominations category.
-* Once five movies are nomintaed, all nomination eligibility is disable.
+* Once five movies are nominated, all nomination eligibility is disabled.
 * Nominations list is saved to the page via localStorage.
 
 ## Installation
