@@ -76,7 +76,7 @@ const Home = () => {
                     <Button onClick={clearHandler} variant='dark'> Clear Search</Button>
                 </Form>
             </Container>
-            <Container className='movie-noms'>
+            <Container className='movie-noms' style={{ minHeight: '100vh' }}>
                 <Row>
                     <Col md='8'>
                         <div>
