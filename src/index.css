@@ -55,7 +55,7 @@ code {
 }
 
 .movies{
-  margin-bottom: 17em;
+  padding: 50px;
 }
 
 .remainder{
@@ -90,4 +90,14 @@ code {
 
 .input{
   margin-top: -3em;
+  width: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  justify-content: space-evenly;
+  margin-left: 0px;
+  margin-right: 0px;
 }

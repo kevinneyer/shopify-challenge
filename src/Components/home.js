@@ -8,6 +8,8 @@ const Home = () => {
 
     const [ title, setTitle ] = useState('')
     const [ movies, setMovies ] = useState([])
+    const [ isMoviesTab, setisMoviesTab ] = useState(true);
+
     // If localStorage is present, use localStorage as state. If not, use an empty array.
     const [ nominations, setNominations ] = useState(
         localStorage.getItem('nominations') ?
@@ -36,6 +38,7 @@ const Home = () => {
         .catch(error => {
             if(error){
                 alert('Something went wrong!')
+                setMovies([]);
             }
         })
     }
@@ -61,56 +64,73 @@ const Home = () => {
         setNominations(newNominations)
     }
    
+    const contentToggle = () => {
+        setisMoviesTab(!isMoviesTab);
+    }
 
-    const sortMovies = movies.sort((a,b) => a.Year - b.Year)
+    const sortMovies = movies.length > 0 ? movies.sort((a,b) => a.Year - b.Year) : []
     
     return(
         <div>
-           {nominations.length === 5 ? <FinishedModal/> : ''}
-            <Container>
+           { nominations.length === 5 ? <FinishedModal/> : '' }
+            <Container fluid >
                 <Form className='input' onSubmit={submitHandler}>
                     <Form.Group>
                         <Form.Label className='title'>Movie Title</Form.Label>
                         <Form.Control onChange={titleHandler} value={title} type='text' placeholder='Enter Movie Title Here...' />
                     </Form.Group>
-                    <Button onClick={clearHandler} variant='dark'> Clear Search</Button>
+                   { movies.length > 0 ? <Button onClick={clearHandler} variant='dark'> Clear Search</Button> : null }
                 </Form>
             </Container>
-            <Container className='movie-noms' style={{ minHeight: '100vh' }}>
+            <Container fluid className='movie-noms' style={{ minHeight: '100vh' }}>
+                <Button onClick={contentToggle} variant='dark'>{ isMoviesTab ? 'See Nomintations' : 'See Movies List'}</Button>
+                <div className='movies-row'>
                 <Row>
-                    <Col md='8'>
+                    { isMoviesTab ?
+                    <Col>
                         <div>
-                            <h3 className='sub-header'>Movies</h3>
-                            {movies.length > 0 ? 
+                            {/* <h3 className='sub-header'>Movies</h3> */}
+                            {/* {movies.length > 0 ? 
                                 <h5 className='remainder'>Search Results for {title}</h5> 
                                 : 
                                 <h5 className='remainder'>Search Results</h5> 
-                            }
+                            } */}
                             <div className='movies'>  
-                                {movies.length > 0 ? 
+                                { movies.length > 0 ? 
                                     <Row>
                                         {sortMovies.map((movie, key) => 
-                                        <Movies id={key} movie={movie} 
-                                        nominateHandler={nominateHandler} 
-                                        nominations={nominations} 
-                                        title={title} />)}
+                                            <Movies 
+                                                id={key} 
+                                                key={key}
+                                                movie={movie} 
+                                                nominateHandler={nominateHandler} 
+                                                nominations={nominations} 
+                                                title={title} 
+                                                isMoviesTab={isMoviesTab}/>
+                                        )}
                                     </Row> 
                                     : 
-                                    null 
+                                    <div className='remainder'>
+                                        Search Some Movies!
+                                    </div>
+                                     
                                 }
                             </div> 
                         </div>
                     </Col>
+                    :
                     <Col> 
                         <Nominations 
                         nominations={nominations} 
                         removeHandler={removeHandler} 
-                        clearNominations={clearNominations}/>
+                        clearNominations={clearNominations}
+                        isMoviesTab={isMoviesTab}/>
                     </Col>
+                }
                 </Row>
+                </div>
             </Container>    
         </div>
-    
     )
 }
 
