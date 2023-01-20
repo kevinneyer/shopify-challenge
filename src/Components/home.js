@@ -1,14 +1,17 @@
-import React,  { useState, useEffect } from 'react'
-import Movies from './movies'
-import Nominations from './nominations'
-import FinishedModal from './finishedModal'
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
+import React,  { useState, useEffect } from 'react';
+import Movies from './movies';
+import Nominations from './nominations';
+import FinishedModal from './finishedModal';
+import TabMessage from './tabMessage';
+import { Form, Button, Container, Row, Col, Tab } from 'react-bootstrap';
 
 const Home = () => {
 
-    const [ title, setTitle ] = useState('')
-    const [ movies, setMovies ] = useState([])
+    const [ title, setTitle ] = useState('');
+    const [ movies, setMovies ] = useState([]);
     const [ isMoviesTab, setisMoviesTab ] = useState(true);
+
+    const movieMessage = "Search Some Movies!";
 
     // If localStorage is present, use localStorage as state. If not, use an empty array.
     const [ nominations, setNominations ] = useState(
@@ -88,14 +91,14 @@ const Home = () => {
                 <Row>
                     { isMoviesTab ?
                     <Col>
-                        <div>
+                        {/* <div> */}
                             {/* <h3 className='sub-header'>Movies</h3> */}
                             {/* {movies.length > 0 ? 
                                 <h5 className='remainder'>Search Results for {title}</h5> 
                                 : 
                                 <h5 className='remainder'>Search Results</h5> 
                             } */}
-                            <div className='movies'>  
+                            <div className='content-tab'>  
                                 { movies.length > 0 ? 
                                     <Row>
                                         {sortMovies.map((movie, key) => 
@@ -110,21 +113,20 @@ const Home = () => {
                                         )}
                                     </Row> 
                                     : 
-                                    <div className='remainder'>
-                                        Search Some Movies!
-                                    </div>
-                                     
+                                    <TabMessage message={movieMessage}/>   
                                 }
                             </div> 
-                        </div>
+                        {/* </div> */}
                     </Col>
                     :
-                    <Col> 
-                        <Nominations 
-                        nominations={nominations} 
-                        removeHandler={removeHandler} 
-                        clearNominations={clearNominations}
-                        isMoviesTab={isMoviesTab}/>
+                    <Col>
+                        <div className='content-tab'>
+                            <Nominations 
+                            nominations={nominations} 
+                            removeHandler={removeHandler} 
+                            clearNominations={clearNominations}
+                            isMoviesTab={isMoviesTab}/>
+                        </div>
                     </Col>
                 }
                 </Row>
