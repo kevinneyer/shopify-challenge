@@ -5,7 +5,7 @@ import logo  from './assets/logo.png'
 
 const App = () => {
   return (
-    <div  className='app'>
+    <div className='app'>
       <Jumbotron className='jumbo'> 
         <h1 className='header'>
           <img className='logo' src={logo} alt='logo'></img>

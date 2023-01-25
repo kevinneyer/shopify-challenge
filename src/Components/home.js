@@ -3,13 +3,14 @@ import Movies from './movies';
 import Nominations from './nominations';
 import FinishedModal from './finishedModal';
 import TabMessage from './tabMessage';
-import { Form, Button, Container, Row, Col, Tab } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
 
     const [ title, setTitle ] = useState('');
     const [ movies, setMovies ] = useState([]);
     const [ isMoviesTab, setisMoviesTab ] = useState(true);
+    const [ error, setError ] = useState(false);
 
     const movieMessage = "Search Some Movies!";
 
@@ -33,15 +34,16 @@ const Home = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         if(title.length === 0){
-            alert('Search Cannot be Empty!')
+            alert('Search cannot be empty')
         } else
         fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDb_API_KEY}&s=${title}`)
         .then(res => res.json())
-        .then(movies => setMovies(movies.Search))
-        .catch(error => {
-            if(error){
+        .then((data) => {
+            if(data.Search) {
+                setMovies(data.Search);
+            } else {
+                setError(true);
                 alert('Something went wrong!')
-                setMovies([]);
             }
         })
     }
@@ -75,31 +77,31 @@ const Home = () => {
     
     return(
         <div>
-           { nominations.length === 5 ? <FinishedModal/> : '' }
+            { nominations.length === 5 ? <FinishedModal/> : '' }
             <Container fluid >
                 <Form className='input' onSubmit={submitHandler}>
                     <Form.Group>
                         <Form.Label className='title'>Movie Title</Form.Label>
                         <Form.Control onChange={titleHandler} value={title} type='text' placeholder='Enter Movie Title Here...' />
                     </Form.Group>
-                   { movies.length > 0 ? <Button onClick={clearHandler} variant='dark'> Clear Search</Button> : null }
+                   { movies.length > 0 && isMoviesTab ? 
+                        <Button onClick={clearHandler} style={{ background: '#f5c518' }} variant='warning'> Clear Search</Button> 
+                        : 
+                        null 
+                    }
                 </Form>
             </Container>
             <Container fluid className='movie-noms' style={{ minHeight: '100vh' }}>
-                <Button onClick={contentToggle} variant='dark'>{ isMoviesTab ? 'See Nomintations' : 'See Movies List'}</Button>
-                <div className='movies-row'>
+                <div className='toggle-button'>
+                    <Button onClick={contentToggle} style={{ minWidth: '200px' }}variant='secondary'>
+                        { isMoviesTab ? 'View Nomintations' : 'See Movies List'}
+                    </Button>
+                </div>
                 <Row>
                     { isMoviesTab ?
-                    <Col>
-                        {/* <div> */}
-                            {/* <h3 className='sub-header'>Movies</h3> */}
-                            {/* {movies.length > 0 ? 
-                                <h5 className='remainder'>Search Results for {title}</h5> 
-                                : 
-                                <h5 className='remainder'>Search Results</h5> 
-                            } */}
+                        <Col>
                             <div className='content-tab'>  
-                                { movies.length > 0 ? 
+                                { sortMovies.length > 0 && !error ? 
                                     <Row>
                                         {sortMovies.map((movie, key) => 
                                             <Movies 
@@ -112,25 +114,26 @@ const Home = () => {
                                                 isMoviesTab={isMoviesTab}/>
                                         )}
                                     </Row> 
-                                    : 
-                                    <TabMessage message={movieMessage}/>   
+                                    :
+                                    <div className='message-column'>
+                                        <TabMessage message={movieMessage}/>   
+                                    </div> 
+                                    
                                 }
                             </div> 
-                        {/* </div> */}
-                    </Col>
-                    :
-                    <Col>
-                        <div className='content-tab'>
-                            <Nominations 
-                            nominations={nominations} 
-                            removeHandler={removeHandler} 
-                            clearNominations={clearNominations}
-                            isMoviesTab={isMoviesTab}/>
-                        </div>
-                    </Col>
-                }
+                        </Col>
+                        :
+                        <Col>
+                            <div className='content-tab'>
+                                <Nominations 
+                                nominations={nominations} 
+                                removeHandler={removeHandler} 
+                                clearNominations={clearNominations}
+                                isMoviesTab={isMoviesTab}/>
+                            </div>
+                        </Col>
+                    }
                 </Row>
-                </div>
             </Container>    
         </div>
     )
