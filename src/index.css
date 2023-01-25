@@ -16,32 +16,31 @@ code {
   text-align: center;
   color: white;
   font-weight: 500;
-  margin-left: -1em; 
   font-size: 5em;
 }
 
-.success-alert{
+.success-alert {
   text-align: center;
 }
 
-.movie-noms{
+.movie-noms {
   margin-top: 2em;
 }
 
-.jumbo{
+.jumbo {
    background-color: black;
 }
 
-.logo{
+.logo {
   width: 80px;
   margin-top: -.25em;
 }
 
-.app{
+.app {
   background-color: black;
 }
 
-.title{
+.title {
   color: #f5c518;
   font-weight: 700;
 }
@@ -50,19 +49,23 @@ code {
   color: white;
 }
 
-.home-div{
+.home-div {
   background-color: black;
 }
 
-.movies{
-  margin-bottom: 17em;
+.content-tab {
+  padding: 50px;
 }
 
-.remainder{
+.tab-message {
   color:#1f98e7;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.nominate{
+.nominate {
   background-color: #1f98e7;
 }
 
@@ -90,4 +93,20 @@ code {
 
 .input{
   margin-top: -3em;
+  width: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  justify-content: space-evenly;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.toggle-button {
+  position: absolute;
+  right: 50px;
+  z-index: 1;
 }
